@@ -14,19 +14,24 @@ interface ResponseHandler {
 
     class Base : ResponseHandler {
 
-        private fun <T> parseError(response: Response<T>): Error {
+        private fun <T> parseError(response: Response<T>): Int {
             response.errorBody()?.let { body ->
                 val jsonObject = JSONObject(body.string())
                 val errorObject = jsonObject.getJSONObject("error")
-                val code = errorObject.getInt("code")
-                val message: Int = when (code) {
-                    in 400 until 500 -> { R.string.error_client }
-                    in 500 until 600 -> { R.string.error_server }
-                    else -> { R.string.error_unknown }
+                val message: Int = when (errorObject.getInt("code")) {
+                    in 400 until 500 -> {
+                        R.string.error_client
+                    }
+                    in 500 until 600 -> {
+                        R.string.error_server
+                    }
+                    else -> {
+                        R.string.error_unknown
+                    }
                 }
-                return Error(code, message)
+                return message
             }
-            return Error(400, R.string.error_unknown)
+            return R.string.error_unknown
         }
 
         override fun <T> handleSuccess(data: T): Resource<T> {
@@ -37,7 +42,7 @@ interface ResponseHandler {
             return when (e) {
                 is HttpException -> {
                     val parsedError = parseError(e.response()!!)
-                    Resource.Error(resId = parsedError.message, data = null)
+                    Resource.Error(resId = parsedError, data = null)
                 }
                 is SocketTimeoutException -> {
                     Resource.Error(

@@ -14,12 +14,10 @@ data class Country(
 )
 
 data class Currency(
-    val code: String,
     val name: String,
     val symbol: String,
 )
 
 data class Flag(
-    val svg: String,
     val png: String,
 )
