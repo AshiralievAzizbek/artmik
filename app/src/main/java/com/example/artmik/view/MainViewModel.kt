@@ -17,7 +17,7 @@ class MainViewModel(
     ViewModel() {
 
 
-    private val mutableCountriesFlow = MutableStateFlow<List<Country>>(listOf())
+    private val mutableCountriesFlow = MutableStateFlow<List<Country>?>(null)
     val countriesFlow get() = mutableCountriesFlow.asSharedFlow()
 
     private val mutableSelectedCountry = MutableStateFlow<Country?>(null)
