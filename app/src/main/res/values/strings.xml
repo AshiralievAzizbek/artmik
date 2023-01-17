@@ -6,5 +6,9 @@
     <string name="text_region">Region: %1$s</string>
     <string name="text_currency">"Currency: %1$s - %2$s"</string>
     <string name="description_flag_of_country">flag of country</string>
+    <string name="error_unknown">Something goes wrong, try again later</string>
+    <string name="error_socket_timeout">Socket timeout</string>
+    <string name="error_client">Client side error</string>
+    <string name="error_server">Server side error</string>
 
 </resources>

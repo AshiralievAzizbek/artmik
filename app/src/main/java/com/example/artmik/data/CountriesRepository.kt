@@ -1,5 +1,6 @@
 package com.example.artmik.data
 
+import com.example.artmik.R
 import com.example.artmik.data.remote.RemoteDataSource
 import com.example.artmik.data.remote.models.Country
 import com.example.artmik.data.remote.utils.Resource
@@ -16,7 +17,7 @@ interface CountriesRepository {
         override suspend fun getCountries(): List<Country>? {
             return when (val resource = remoteDataSource.getCountries()) {
                 is Resource.Error -> {
-                    networkExceptionHandler.handle(resource.message ?: "R.string.server_error")
+                    networkExceptionHandler.handle(resource.message ?: R.string.error_unknown)
                     null
                 }
                 is Resource.Success -> {

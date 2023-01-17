@@ -54,7 +54,9 @@ class CountriesFragment : Fragment() {
         binding.countriesList.adapter = adapter
 
         viewModel.countriesFlow.onEach { countries ->
-            adapter!!.submitList(countries)
+            countries?.let {
+                adapter!!.submitList(it)
+            }
         }.whenStarted(lifecycleScope)
 
     }

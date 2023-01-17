@@ -1,35 +1,23 @@
 package com.example.artmik.domain
 
-import android.util.Log
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.launch
 
 interface NetworkExceptionHandler {
 
-    val exceptionsFlow: SharedFlow<String>
+    val exceptionsFlow: SharedFlow<Int>
 
-    suspend fun handle(message: String)
+    suspend fun handle(message: Int)
 
     class Base : NetworkExceptionHandler {
 
-        private val mutableExtensionsFlow = MutableSharedFlow<String>()
+        private val mutableExtensionsFlow = MutableSharedFlow<Int>()
 
-        init {
-            CoroutineScope(Dispatchers.Main).launch {
-                mutableExtensionsFlow.collect {
-                    Log.d("SHIT", ": $it ")
-                }
-            }
-        }
-
-        override val exceptionsFlow: SharedFlow<String>
+        override val exceptionsFlow: SharedFlow<Int>
             get() = mutableExtensionsFlow.asSharedFlow()
 
-        override suspend fun handle(message: String) {
+        override suspend fun handle(message: Int) {
             mutableExtensionsFlow.emit(message)
         }
 

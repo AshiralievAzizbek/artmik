@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         mainViewModel.getExceptionsFlow().onEach { message ->
-            showSnackBar(binding.root, message, true)
+            showSnackBar(binding.root, getString(message), true)
         }.whenCreated(lifecycleScope)
     }
 
