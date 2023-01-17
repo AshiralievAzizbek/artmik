@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">artmik</string>
+    <string name="text_capital">Capital: </string>
+    <string name="description_flag_of_country">flag of country</string>
+    <string name="btn_text_update">update</string>
 </resources>
