@@ -6,6 +6,7 @@ import retrofit2.Response
 import java.net.SocketTimeoutException
 
 private const val SOCKET_TIME_OUT_CODE = -1
+private const val UNKNOWN_EXCEPTION_CODE = -2
 
 interface ResponseHandler {
 
@@ -53,7 +54,7 @@ interface ResponseHandler {
                 }
                 else -> {
                     Resource.Error(
-                        message = getErrorMessage(Int.MAX_VALUE, e.message),
+                        message = getErrorMessage(UNKNOWN_EXCEPTION_CODE, e.message),
                         data = null
                     )
                 }

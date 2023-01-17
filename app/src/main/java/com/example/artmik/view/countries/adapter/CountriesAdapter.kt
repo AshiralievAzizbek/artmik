@@ -12,7 +12,13 @@ import com.example.artmik.R
 import com.example.artmik.data.remote.models.Country
 import com.example.artmik.view.utils.load
 
-class CountriesAdapter() : ListAdapter<Country, CountriesAdapter.ViewHolder>(DiffCallback()) {
+class CountriesAdapter : ListAdapter<Country, CountriesAdapter.ViewHolder>(DiffCallback()) {
+
+    private lateinit var onClickAction: (country: Country) -> Unit
+
+    fun setOnItemClickAction(action: (country: Country) -> Unit) {
+        onClickAction = action
+    }
 
     private class DiffCallback : DiffUtil.ItemCallback<Country>() {
         override fun areItemsTheSame(oldItem: Country, newItem: Country): Boolean {
@@ -24,13 +30,16 @@ class CountriesAdapter() : ListAdapter<Country, CountriesAdapter.ViewHolder>(Dif
         }
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val name = itemView.findViewById<TextView>(R.id.rv_item_name)
         private val flag = itemView.findViewById<ImageView>(R.id.rv_item_flag)
 
         fun bind(country: Country) {
             name.text = country.name
-            flag.load(country.flag)
+            flag.load(country.flags.png)
+            itemView.setOnClickListener {
+                onClickAction(country)
+            }
         }
     }
 

@@ -1,82 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_bg"
     android:clickable="true"
-    android:focusable="true"
-    android:orientation="vertical">
+    android:focusable="true">
 
-    <TextView
-        android:id="@+id/name"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginVertical="32dp"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:text="United Kingdom of Great Britain" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp">
+        android:orientation="vertical"
+        android:paddingBottom="24dp">
 
         <TextView
-            android:id="@+id/flag"
-            android:layout_width="wrap_content"
+            android:id="@+id/name"
+            style="@style/TitleText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textSize="16sp"
-            tools:text="Flag: " />
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="32dp"
+            tools:text="United Kingdom of Great Britain" />
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:id="@+id/flag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:contentDescription="@string/description_flag_of_country"
             tools:scaleY="0.5"
             tools:src="@color/black" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/capital"
+            style="@style/DescriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            tools:text="Capital: London" />
 
+        <TextView
+            android:id="@+id/region"
+            style="@style/DescriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            tools:text="Region: Europe" />
 
-    <TextView
-        android:id="@+id/capital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
-        android:textSize="16sp"
-        tools:text="Capital: London" />
+        <TextView
+            android:id="@+id/currency"
+            style="@style/DescriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            tools:text="Currency: Euro - € " />
 
-    <TextView
-        android:id="@+id/region"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
-        android:textSize="16sp"
-        tools:text="Region: Europe" />
+        <TextView
+            android:id="@+id/timezones"
+            style="@style/DescriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:textSize="16sp"
+            tools:text="Timezones: -1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12 " />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
-        android:textSize="16sp"
-        tools:text="Timezones: -1, -2, -3, -4, -5, -6, -7, -8, -9, -10, -11, -12 " />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
-        android:textSize="16sp"
-        tools:text="Currency: Euro - € " />
-
-
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

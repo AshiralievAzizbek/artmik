@@ -9,7 +9,7 @@ data class Country(
     val capital: String,
     val region: String,
     val timezones: List<String>,
-    val flag: String,
+    val flags: Flag,
     val currencies: List<Currency>,
 )
 
@@ -17,4 +17,9 @@ data class Currency(
     val code: String,
     val name: String,
     val symbol: String,
+)
+
+data class Flag(
+    val svg: String,
+    val png: String,
 )

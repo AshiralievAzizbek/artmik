@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">artmik</string>
-    <string name="text_capital">Capital: </string>
-    <string name="description_flag_of_country">flag of country</string>
     <string name="btn_text_update">update</string>
+    <string name="text_capital">Capital: %1$s</string>
+    <string name="text_timezones">"Timezones: %1$s"</string>
+    <string name="text_region">Region: %1$s</string>
+    <string name="text_currency">"Currency: %1$s - %2$s"</string>
+    <string name="description_flag_of_country">flag of country</string>
+
 </resources>
