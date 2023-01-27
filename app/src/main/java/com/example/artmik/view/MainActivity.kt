@@ -8,19 +8,15 @@ import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.artmik.databinding.ActivityMainBinding
 import com.example.artmik.view.utils.showSnackBar
-import com.example.artmik.view.utils.whenCreated
+import com.example.artmik.view.utils.whenResumed
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by viewBinding(CreateMethod.INFLATE)
-    private val mainViewModel: MainViewModel by viewModels { mainViewModelFactory }
-
-    @Inject
-    lateinit var mainViewModelFactory: MainViewModelFactory
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.getExceptionsFlow().onEach { message ->
             showSnackBar(binding.root, getString(message), true)
-        }.whenCreated(lifecycleScope)
+        }.whenResumed(lifecycleScope)
     }
 
 }

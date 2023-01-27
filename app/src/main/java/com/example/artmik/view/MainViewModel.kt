@@ -5,16 +5,18 @@ import androidx.lifecycle.viewModelScope
 import com.example.artmik.data.CountriesRepository
 import com.example.artmik.data.remote.models.Country
 import com.example.artmik.domain.NetworkExceptionHandler
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val networkExceptionHandler: NetworkExceptionHandler,
     private val repository: CountriesRepository
-) :
-    ViewModel() {
+) : ViewModel() {
 
 
     private val mutableCountriesFlow = MutableStateFlow<List<Country>?>(null)

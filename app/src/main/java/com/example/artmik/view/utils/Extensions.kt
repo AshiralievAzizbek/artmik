@@ -18,6 +18,11 @@ fun <T> Flow<T>.whenCreated(lifecycleScope: LifecycleCoroutineScope) {
         this@whenCreated.collect()
     }
 }
+fun <T> Flow<T>.whenResumed(lifecycleScope: LifecycleCoroutineScope) {
+    lifecycleScope.launchWhenResumed {
+        this@whenResumed.collect()
+    }
+}
 
 fun <T> Flow<T>.whenStarted(lifecycleScope: LifecycleCoroutineScope) {
     lifecycleScope.launchWhenStarted {

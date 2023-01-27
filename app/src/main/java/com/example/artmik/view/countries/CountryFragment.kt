@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.artmik.R
 import com.example.artmik.databinding.FragmentCountryBinding
 import com.example.artmik.view.MainViewModel
-import com.example.artmik.view.MainViewModelFactory
 import com.example.artmik.view.utils.load
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -20,10 +19,7 @@ import javax.inject.Inject
 class CountryFragment : Fragment() {
 
     private val binding: FragmentCountryBinding by viewBinding(CreateMethod.INFLATE)
-    private val viewModel: MainViewModel by viewModels { mainViewModelFactory}
-
-    @Inject
-    lateinit var mainViewModelFactory: MainViewModelFactory
+    private val viewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
